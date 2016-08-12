@@ -1,0 +1,224 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+/* run this program using the console pauser or add your own getch, system("pause") or input loop */
+
+int main(int argc, char *argv[]) 	
+{
+  int entradaOk = 0;
+  char ent1, ent2, ent3, ent4;
+  char n='S';
+  while(n!='N'&& n!='n'){
+  
+  do {
+  	printf("\nDigite un numero de cuatro cifras: ");
+     ent1=getche();
+     ent2=getche();
+     ent3=getche();
+     ent4=getche();
+     if ((ent1 == ent2) && (ent1 == ent3) && (ent1 == ent4))
+     {
+       printf("\nNumero repdigits\n");
+     }
+     else
+     {
+       if ((ent1 >= '0') && (ent1 <= '9') && (ent2 >= '0') && (ent2 <= '9') && (ent3 >= '0') && (ent3 <= '9') && (ent4 >= '0') && (ent4 <= '9'))
+       {
+         if ((ent1 == '6') && (ent2 == '1') && (ent3 == '7') && (ent4 == '4'))
+         {
+            printf("\nNumero Kaprekar\n");
+         }
+         else
+         {
+           entradaOk = 1;
+         }
+       }
+       else
+       {
+         printf("\nDebe escribir unicamente caracteres numericos\n");
+       }
+     }
+  } while (entradaOk == 0);
+    //printf("\nNumero de entrada válido: %c%c%c%c\n",ent1, ent2, ent3, ent4);
+      int numero = 0;
+     int iteraciones = 0;
+  while (numero != 6174)
+  {
+    char minimo, menor, mayor, maximo;
+    // encontrar el mínimo
+    minimo = ent1;
+    if (ent2 < minimo)
+    {
+      minimo = ent2;
+    }
+    if (ent3 < minimo)
+    {
+      minimo = ent3;
+    }
+    if (ent4 < minimo)
+    {
+      minimo = ent4;
+    }
+    // Borrar el mínimo
+    if (minimo == ent1)
+    {
+      ent1 = '?';
+    }
+    else
+    {
+      if (minimo == ent2)
+      {
+        ent2 = '?';
+      }
+      else
+      {
+        if (minimo == ent3)
+        {
+          ent3 = '?';
+        }
+        else
+        {
+          ent4 = '?';
+        }
+      }
+    }
+    
+    // encontrar el menor
+    menor = ent1;
+    if (ent2 < menor)
+    {
+      menor = ent2;
+    }
+    if (ent3 < menor)
+    {
+      menor = ent3;
+    }
+    if (ent4 < menor)
+    {
+      menor = ent4;
+    }
+    // Borrar el menor
+    if (menor == ent1)
+    {
+      ent1 = '?';
+    }
+    else
+    {
+      if (menor == ent2)
+      {
+        ent2 = '?';
+      }
+      else
+      {
+        if (menor == ent3)
+        {
+          ent3 = '?';
+        }
+        else
+        {
+          ent4 = '?';
+        }
+      }
+    }
+
+    // encontrar el mayor
+    mayor= ent1;
+    if (ent2 < mayor)
+    {
+      mayor = ent2;
+    }
+    if (ent3 < mayor)
+    {
+      mayor = ent3;
+    }
+    if (ent4 < mayor)
+    {
+      mayor = ent4;
+    }
+    // Borrar el mayor
+    if (mayor == ent1)
+    {
+      ent1 = '?';
+    }
+    else
+    {
+      if (mayor == ent2)
+      {
+        ent2 = '?';
+      }
+      else
+      {
+        if (mayor == ent3)
+        {
+          ent3 = '?';
+        }
+        else
+        {
+          ent4 = '?';
+        }
+      }
+    }
+
+
+    // encontrar el máximo
+    maximo= ent1;
+    if (ent2 < maximo)
+    {
+      maximo = ent2;
+    }
+    if (ent3 < maximo)
+    {
+      maximo = ent3;
+    }
+    if (ent4 < maximo)
+    {
+      maximo = ent4;
+    }
+    // Borrar el maximo
+    if (maximo == ent1)
+    {
+      ent1 = '?';
+    }
+    else
+    {
+      if (maximo == ent2)
+      {
+        ent2 = '?';
+      }
+      else
+      {
+        if (maximo == ent3)
+        {
+          ent3 = '?';
+        }
+        else
+        {
+          ent4 = '?';
+        }
+      }
+    
+    }
+
+    //printf("\nMinimo=%c, Menor=%c, Mayor=%c, Maximo=%c\n", minimo, menor, mayor, maximo);
+        int ascendente = (minimo - '0')  *1000 + (menor - '0')  *100 + (mayor - '0') * 10 + (maximo - '0');
+    int descendente =  (maximo - '0')  *1000 + (mayor - '0')  *100 + (menor - '0') * 10 + (minimo - '0');
+    numero = descendente - ascendente;
+    //printf("\nMayor=%d, Menor=%d, Resta=%d", descendente, ascendente, numero);
+    int temp = numero;
+    iteraciones++;
+        ent1 = temp / 1000 + '0';
+    temp = temp % 1000;
+    ent2 = temp / 100 + '0';
+    temp = temp % 100;
+    ent3 = temp / 10 + '0';
+    ent4 = temp % 10 + '0';
+     
+  } // while
+    printf ("\nPara obtener el número de Kaprekar (6174) fueron necesarias %d iteraciones", iteraciones);
+     printf("\nDesea continuar? \n");
+    n=getche();
+
+}    
+	return 0;//capturar datos en pantallas, si los 4 digitos son iguales entonces es repdigits
+	
+}
