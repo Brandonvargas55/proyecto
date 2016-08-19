@@ -1,0 +1,106 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(int argc, char *argv[]){
+    int dia,edad,peso,ptm,pm,dm,pf,ss,r,rr,rrr,dd;
+   float a,b,c,d;
+   char nomb,sexo,don,fin,resp; 
+  
+   rrr=0;
+   ptm=0;
+   pm=0;
+   dm=0;
+   pf=300;
+   ss=0;
+    a=0;
+	b=0;
+	c=0;
+	d=0;
+ printf("¿que dias es hoy?.\n");
+ printf("lunes=1. martes=2. .miercoles=3.jueves=4.viernes=5.\n");
+ scanf("%i",& dia);
+ 
+ if(dia>0 && dia<6){
+ 	for(dd=dia;dd<=5;dd++){
+	printf("Llego una persona este dia ? s/n.\n");
+    resp=getch();     
+ while(resp=='s'){
+ 		printf("nombre del donate: .\n");
+   	fflush(stdin);
+	scanf("%c",& nomb);
+
+
+	printf("peso del donate: .\n");
+   	fflush(stdin);
+	scanf("%i",&peso);
+
+   	printf("edad del donante: .\n");
+   	fflush(stdin);
+	scanf("%i",&edad);
+
+ 
+  if(edad>18 && edad<60 && peso>=50){
+	printf("donate acto.\n");
+	printf("sexo del donante m/f: .\n");
+	fflush(stdin);
+	scanf("%c",&sexo);
+	if(sexo=='m'){
+	if(dia==2 || dia==4){
+	pm=pm+peso;
+	dm++;
+	}
+		}
+	
+	printf("tipo de sangre.\n");
+	printf(" a=1.  b=2.  ab=3.  o=4.\n");
+	fflush(stdin);
+   	scanf("%i", & ss);
+   	    if(ss==1){
+   	       a+=0.5;
+		}
+		 if(ss==2){
+   	       b+=0.5;
+		}
+        if(ss==3){
+   	       c+=0.5;
+ 	      if(pf>peso && sexo=='f'){
+			  pf=peso;
+		}
+	    }
+	    if(ss==4){
+	    	 d+=0.5;
+		}
+		}
+        else{
+        	printf("donate no acto.\n");
+			  system("pause");
+		} 
+ 
+    
+     if(resp=='s'){
+	printf("hay donates:  .\n");
+    printf("s/n.\n");
+    fflush(stdin);
+    scanf("%c",&resp);
+	}
+			
+ }//while
+
+ }//for
+
+
+ ptm=pm/dm;
+  printf("donacion de tipo a: %f .\n",a);
+ printf("donacion de tipo b: %f .\n",b);
+ printf("donacion de tipo ab: %f .\n",c);
+ printf("donacion de tipo o: %f .\n",d); 
+ printf("promedio del peso masulino es: %i .\n",ptm);
+ printf("menor peso femenino es: %i .\n",pf);
+
+}//if
+	else{
+	printf("valor incorrecto.\n");
+}
+system("pause");
+return 0;
+ }//main
